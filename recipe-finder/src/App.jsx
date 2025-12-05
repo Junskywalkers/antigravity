@@ -29,7 +29,7 @@ function App() {
 
   return (
     <FavoritesContext.Provider value={{ favorites, toggleFavorite }}>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <Header />
         <main className="container">
           <Routes>
