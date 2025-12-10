@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Results from './pages/Results';
@@ -9,8 +9,13 @@ export const FavoritesContext = createContext();
 
 function App() {
   const [favorites, setFavorites] = useState(() => {
-    const saved = localStorage.getItem('favorites');
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem('favorites');
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      console.error('Failed to parse favorites', e);
+      return [];
+    }
   });
 
   useEffect(() => {
@@ -29,7 +34,7 @@ function App() {
 
   return (
     <FavoritesContext.Provider value={{ favorites, toggleFavorite }}>
-      <Router basename={import.meta.env.BASE_URL}>
+      <Router>
         <Header />
         <main className="container">
           <Routes>
