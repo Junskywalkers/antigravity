@@ -8,6 +8,7 @@ export default defineConfig({
   plugins: [react()],
   base: process.env.NODE_ENV === 'production' ? repoName : '/',
   build: {
-    outDir: 'docs',
+    outDir: '../../docs/recipe-finder',
+    emptyOutDir: true,
   },
 })
