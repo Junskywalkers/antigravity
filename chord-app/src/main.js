@@ -13,6 +13,16 @@ const chords = {
   'Am': [440.00, 523.25, 659.25]  // A4, C5, E5
 };
 
+// Instrument Presets
+const instruments = {
+  'soft': { type: 'triangle', attack: 0.05, decay: 1.5 },
+  'synth': { type: 'sawtooth', attack: 0.05, decay: 0.8 },
+  '8bit': { type: 'square', attack: 0.01, decay: 0.5 },
+  'pure': { type: 'sine', attack: 0.1, decay: 2.0 }
+};
+
+let currentInstrument = 'soft';
+
 function initAudio() {
   if (!audioCtx) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -29,18 +39,19 @@ function playChord(chordName) {
   if (!frequencies) return;
 
   const now = audioCtx.currentTime;
-  const duration = 1.5; // seconds
+  const config = instruments[currentInstrument];
+  const duration = config.decay; 
 
   frequencies.forEach(freq => {
     const osc = audioCtx.createOscillator();
     const gainNode = audioCtx.createGain();
 
-    osc.type = 'triangle'; // Softer sound than sine, richer than sine
+    osc.type = config.type;
     osc.frequency.value = freq;
 
     // Envelope
     gainNode.gain.setValueAtTime(0, now);
-    gainNode.gain.linearRampToValueAtTime(0.3, now + 0.05); // Attack
+    gainNode.gain.linearRampToValueAtTime(0.3, now + config.attack); // Attack
     gainNode.gain.exponentialRampToValueAtTime(0.001, now + duration); // Decay
 
     osc.connect(gainNode);
@@ -50,6 +61,11 @@ function playChord(chordName) {
     osc.stop(now + duration);
   });
 }
+
+// Instrument Switching
+document.getElementById('instrument-select').addEventListener('change', (e) => {
+  currentInstrument = e.target.value;
+});
 
 // UI Interaction
 document.querySelectorAll('.chord-btn').forEach(btn => {
