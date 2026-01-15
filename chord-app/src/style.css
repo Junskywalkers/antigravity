@@ -35,6 +35,64 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
+.controls {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.controls label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+#instrument-select {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  text-align: center;
+  min-width: 200px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  backdrop-filter: blur(5px);
+}
+
+#instrument-select:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+#instrument-select:focus {
+  border-color: #764ba2;
+  box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.3);
+}
+/* Custom arrow for select */
+.controls {
+  position: relative;
+}
+.controls::after {
+  content: '▼';
+  font-size: 0.8rem;
+  position: absolute;
+  right: 50%;
+  bottom: 14px;
+  transform: translateX(80px); /* Approx placement */
+  pointer-events: none;
+  color: rgba(255,255,255,0.5);
+}
+
 .button-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
