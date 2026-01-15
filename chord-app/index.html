@@ -1,33 +1,23 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chord Buttons</title>
-  </head>
-  <body>
-    <div id="app">
-      <h1>Chord Buttons</h1>
-      
-      <div class="controls">
-        <label for="instrument-select">Instrument</label>
-        <select id="instrument-select">
-          <option value="soft">Soft (Triangle)</option>
-          <option value="synth">Synth (Sawtooth)</option>
-          <option value="8bit">8-Bit (Square)</option>
-          <option value="pure">Pure (Sine)</option>
-        </select>
-      </div>
 
-      <div class="button-grid">
-        <button class="chord-btn" data-chord="C">C</button>
-        <button class="chord-btn" data-chord="Dm">Dm</button>
-        <button class="chord-btn" data-chord="Em">Em</button>
-        <button class="chord-btn" data-chord="F">F</button>
-        <button class="chord-btn" data-chord="G">G</button>
-        <button class="chord-btn" data-chord="Am">Am</button>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chord Buttons</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Chord Buttons</h1>
+    <div class="button-grid">
+      <button class="chord-btn" data-chord="C">C</button>
+      <button class="chord-btn" data-chord="Dm">Dm</button>
+      <button class="chord-btn" data-chord="Em">Em</button>
+      <button class="chord-btn" data-chord="F">F</button>
+      <button class="chord-btn" data-chord="G">G</button>
+      <button class="chord-btn" data-chord="Am">Am</button>
     </div>
   </div>
   <script type="module" src="/src/main.js"></script>
